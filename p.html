@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Personal portfolio showcasing skills, projects, and contact information." />
+        <title>Rohini | Full Stack Developer</title>
+
+        <!-- Google Fonts: Poppins -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <style>
+            :root {
+                --bg-color: #ffffff;
+                --text-color: #1a1a1a;
+                --accent-color: #ff9800;
+                --header-bg: #232f3e;
+                --card-bg: #f9f9f9;
+                --button-bg: #ff9800;
+                --button-text: #ffffff;
+            }
+
+            [data-theme="dark"] {
+                --bg-color: #121212;
+                --text-color: #f5f5f5;
+                --accent-color: #ff9800;
+                --header-bg: #1a1a1a;
+                --card-bg: #1e1e1e;
+                --button-bg: #ff9800;
+                --button-text: #121212;
+            }
+
+            body {
+                margin: 0;
+                font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+                background: var(--bg-color);
+                color: var(--text-color);
+                font-size: 19px;
+                transition: background-color 0.4s, color 0.4s;
+            }
+
+            .modern-header {
+                background: linear-gradient(135deg, #ff6a00, #ee0979);
+                padding: 80px 20px;
+                text-align: center;
+                color: #fff;
+                position: relative;
+                overflow: hidden;
+                border-bottom: 4px solid var(--accent-color);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+
+            .header-container {
+                max-width: 900px;
+                margin: auto;
+                padding: 30px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 20px;
+                backdrop-filter: blur(12px);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                position: relative;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                border: 4px solid var(--accent-color);
+                margin-bottom: 20px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, .4);
+                transition: transform 0.3s ease;
+            }
+
+            .profile-pic:hover {
+                transform: scale(1.05);
+            }
+
+            .modern-header h1 {
+                font-size: 3rem;
+                margin: 10px 0;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+            .typing {
+                font-size: 1.25rem;
+                font-style: italic;
+                font-weight: 500;
+                margin-bottom: 25px;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+                border-right: 2px solid #fff;
+                animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+                max-width: 100%;
+            }
+
+            @keyframes typing {
+                from {
+                    width: 0;
+                }
+
+                to {
+                    width: 100%;
+                }
+            }
+
+            @keyframes blink {
+                50% {
+                    border-color: transparent;
+                }
+            }
+
+            .modern-header nav {
+                margin-top: 20px;
+            }
+
+            .modern-header nav a {
+                margin: 0 15px;
+                color: var(--button-text);
+                background-color: var(--accent-color);
+                padding: 10px 16px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: background 0.3s, transform 0.2s;
+            }
+
+            .modern-header nav a:hover {
+                background-color: #e65100;
+                transform: translateY(-2px);
+            }
+
+            #themeToggle {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: var(--accent-color);
+                color: var(--button-text);
+                padding: 10px 16px;
+                border: none;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                z-index: 1;
+            }
+
+            #themeToggle:hover {
+                background-color: #e65100;
+            }
+
+            section {
+                padding: 50px 20px;
+                max-width: 1000px;
+                margin: auto;
+            }
+
+            h2 {
+                font-size: 2rem;
+                color: var(--accent-color);
+                margin-bottom: 20px;
+            }
+
+            .skills,
+            .projects {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+
+            .skills div {
+                background: var(--card-bg);
+                color: var(--text-color);
+                padding: 12px;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            .projects .project-card {
+                background: var(--card-bg);
+                color: var(--text-color);
+                border-radius: 12px;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .project-card a {
+                color: var(--accent-color);
+                font-weight: bold;
+            }
+
+            form input,
+            form textarea,
+            form button {
+                width: 100%;
+                margin-bottom: 12px;
+                padding: 12px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+                font-size: 1rem;
+            }
+
+            form button {
+                background-color: var(--accent-color);
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                border: none;
+            }
+
+            ul li {
+                margin-bottom: 10px;
+            }
+
+            #scrollTopBtn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                display: none;
+                padding: 12px 16px;
+                background-color: var(--accent-color);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="modern-header">
+            <div class="header-container">
+                <button id="themeToggle">🌗 Toggle Theme</button>
+                <img src="profile.jpg" alt="Profile Photo" class="profile-pic">
+                <h1>Hi, I'm Rohini</h1>
+                <p class="typing">Full Stack Web Developer</p>
+                <nav>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div>HTML</div>
+                <div>CSS</div>
+                <div>JavaScript</div>
+                <div>React</div>
+                <div>Node.js</div>
+                <div>SQL</div>
+                <div>c</div>
+                <div>Python</div>
+
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>My personal website showcasing my work and skills.</p>
+                    <a href="https://github.com/yourusername/portfolio" target="_blank">View Code</a>
+                </div>
+                <div class="project-card">
+                    <h3>Todo App</h3>
+                    <p>A full-stack app for managing daily tasks with user authentication.</p>
+                    <a href="https://github.com/yourusername/todo-app" target="_blank">View Code</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Resume</h2>
+            <a href="Rohini%20K.docx" download>Download Resume</a>
+        </section>
+
+        <section>
+            <h2>Achievements</h2>
+            <ul>
+                <li>Excel Certificate by IBM via Coursera</li>
+                <li>Selected for Full Stack Web Development Internship at Future Interns</li>
+                <li>Completed IoT Project on Smart Home Automation using ESP32</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
+        <button id="scrollTopBtn">Top</button>
+
+        <script>
+            const toggleButton = document.getElementById('themeToggle');
+            toggleButton.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+            });
+
+            const scrollBtn = document.getElementById("scrollTopBtn");
+            window.onscroll = function () {
+                scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
+            };
+            scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+            document.getElementById("contactForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("Thank you! Your message has been sent.");
+                this.reset();
+            });
+        </script>
+    </body>
+
+</html>
